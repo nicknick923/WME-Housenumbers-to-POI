@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WME Housenumbers to POI
-// @version      2020.10.18.3
+// @version      2021.7.31.1
 // @description  Converts HouseNumbers to POI
 // @author       davidakachaos
 // @include      /^https:\/\/(www|beta)\.waze\.com(\/\w{2,3}|\/\w{2,3}-\w{2,3}|\/\w{2,3}-\w{2,3}-\w{2,3})?\/editor\b/
@@ -19,6 +19,7 @@
  
 // Update 2020-10-18: Added option to use the alt city name when no city found initial
 // Update 2020-10-18: Added option to set a default lock level in the settings
+// Update 2021-07-31: Made it work again :)
  
 (function() {
  
@@ -231,6 +232,7 @@
       emptyCity: addr.city.attributes.name ? null : true,
       streetName: addr.street.name,
       streetEmpty: !1,
+      houseNumber: num.number
     };
  
     const res = new Landmark();
@@ -241,7 +243,6 @@
     }
     // res.geometry.x += 10;
     res.attributes.residential = true;
-    res.attributes.houseNumber = num.number;
     // set default lock level
     res.attributes.lockRank = settings.defaultLockLevel - 1;
  
@@ -265,9 +266,12 @@
     }
  
     // Setup a navigation point
-    let distanceToSegment = res.geometry.distanceTo(seg.geometry, { details: true })
-    let closestPoint = new OpenLayers.Geometry.Point(distanceToSegment.x1, distanceToSegment.y1);
-    let eep = new NavigationPoint(closestPoint);
+    //creates an EP by the street
+    //let distanceToSegment = res.geometry.distanceTo(seg.geometry, { details: true })
+    //let closestPoint = new OpenLayers.Geometry.Point(distanceToSegment.x1, distanceToSegment.y1);
+    //let eep = new NavigationPoint(closestPoint);
+    //creates an EP where the old HN was
+    let eep = new NavigationPoint(res.geometry.clone());
     res.attributes.entryExitPoints.push(eep);
  
     if (settings.noDuplicates && hasDuplicates(res, addr))
