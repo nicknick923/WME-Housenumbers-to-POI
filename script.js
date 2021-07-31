@@ -1,8 +1,9 @@
 // ==UserScript==
-// @name         WME Housenumbers to POI
+// @name         WME Housenumbers to POI-njs923 fork
 // @version      2021.7.31.1
 // @description  Converts HouseNumbers to POI
 // @author       davidakachaos
+// @author       nicknick923
 // @include      /^https:\/\/(www|beta)\.waze\.com(\/\w{2,3}|\/\w{2,3}-\w{2,3}|\/\w{2,3}-\w{2,3}-\w{2,3})?\/editor\b/
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
 // @require      https://greasyfork.org/scripts/38421-wme-utils-navigationpoint/code/WME%20Utils%20-%20NavigationPoint.js?version=251065
