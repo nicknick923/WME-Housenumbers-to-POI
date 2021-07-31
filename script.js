@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         WME Housenumbers to POI-njs923 fork
-// @version      2021.7.31.1
+// @version      2021.7.31.2
 // @description  Converts HouseNumbers to POI
 // @author       davidakachaos
 // @author       nicknick923
@@ -21,6 +21,7 @@
 // Update 2020-10-18: Added option to use the alt city name when no city found initial
 // Update 2020-10-18: Added option to set a default lock level in the settings
 // Update 2021-07-31: Made it work again :)
+// Update 2021-07-31: Updated POI to RPP in display
  
 (function() {
  
@@ -37,7 +38,7 @@
   let oldSegmentsId = [];
   const locales = {
     en: {
-      makePoiButtonText: 'HN → POI',
+      makePoiButtonText: 'HN → RPP',
       noDuplicatesLabel: 'No POI duplicates',
       defaultLockLevel: 'Default lock level'
     },
